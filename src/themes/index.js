@@ -1,3 +1,3 @@
-import * as standard from './default';
+import * as sumup from './sumup';
 
-export { standard };
+export { sumup as standard };
