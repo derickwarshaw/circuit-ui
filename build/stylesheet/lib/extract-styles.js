@@ -3,14 +3,14 @@ import * as emotion from 'react-emotion';
 import * as ReactTestRenderer from 'react-test-renderer';
 import { ThemeProvider } from 'emotion-theming';
 
-import { standard } from '../../../src/themes';
+import { sumup } from '../../../src/themes';
 
 const adjustPath = path => `../../../${path}`;
 
 const renderComponent = async (Component, theme, props) => {
   try {
     ReactTestRenderer.create(
-      <ThemeProvider theme={standard}>
+      <ThemeProvider theme={sumup}>
         <Component {...{ theme, ...props }} />
       </ThemeProvider>
     );
@@ -75,7 +75,7 @@ const extractStyles = async ({ path, propTypes }) => {
   const relativePath = adjustPath(path);
   const { default: Component } = await import(relativePath);
   const propGroups = createPropGroups(propTypes);
-  propGroups.forEach(props => renderComponent(Component, standard, props));
+  propGroups.forEach(props => renderComponent(Component, sumup, props));
   const { inserted } = emotion.caches;
   const regex = /-/;
   const filteredStyles = Object.entries(inserted).reduce(

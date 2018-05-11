@@ -1,21 +1,23 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-
-import { standard } from '../../themes';
 
 import withTests from '../../util/withTests';
 import Col from './Col';
 
-const StyledCol = styled(Col)`
-  background-color: ${standard.colors.b500};
-  color: ${standard.colors.white};
+const baseColStyles = ({ theme }) => css`
+  background-color: ${theme.colors.p500};
+  color: ${theme.colors.white};
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
   height: 40px;
   padding: 10px;
+`;
+
+const StyledCol = styled(Col)`
+  ${baseColStyles};
 `;
 
 StyledCol.defaultProps = {

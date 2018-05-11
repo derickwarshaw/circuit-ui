@@ -1,37 +1,44 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 
 import withTests from '../../util/withTests';
 import Grid from './Grid';
 import Col from '../Col';
 import Row from '../Row';
-import { standard } from '../../themes';
 
-const StyledCol = styled(Col)`
-  color: ${standard.colors.white};
+const baseColStyles = ({ theme }) => css`
+  color: ${theme.colors.white};
   font-size: 14px;
   font-weight: bold;
   line-height: 20px;
   height: 40px;
   padding: 10px;
   &:nth-of-type(n) {
-    background-color: ${standard.colors.b500};
+    background-color: ${theme.colors.b500};
   }
 
   &:nth-of-type(2n) {
-    background-color: ${standard.colors.b300};
+    background-color: ${theme.colors.b300};
   }
+`;
+
+const StyledCol = styled(Col)`
+  ${baseColStyles};
 `;
 
 StyledCol.defaultProps = {
   skip: '0'
 };
 
-const StyledRow = styled(Row)`
-  border: 2px solid ${standard.colors.y100};
+const baseRowStyles = ({ theme }) => css`
+  border: 2px solid ${theme.colors.y100};
   margin-bottom: 8px;
+`;
+
+const StyledRow = styled(Row)`
+  ${baseRowStyles};
 `;
 
 storiesOf('Grid', module)

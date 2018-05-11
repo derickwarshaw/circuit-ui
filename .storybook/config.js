@@ -6,7 +6,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withSmartKnobs } from 'storybook-addon-smart-knobs';
 import { ThemeProvider } from 'emotion-theming';
 
-import { standard } from '../src/themes';
+import { sumup } from '../src/themes';
 import injectGlobalStyles from '../src/styles/global-styles';
 
 // Dynamically decide wich styles to load.
@@ -15,7 +15,7 @@ if (PRODUCTION) {
 }
 
 if (!PRODUCTION) {
-  injectGlobalStyles({ theme: standard });
+  injectGlobalStyles({ theme: sumup });
 }
 
 // Sets the info addon's options.
@@ -26,7 +26,7 @@ setDefaults({
 const req = require.context('../src/components', true, /\.story\.js$/);
 
 const withThemeProvider = storyFn => (
-  <ThemeProvider theme={standard}>{storyFn()}</ThemeProvider>
+  <ThemeProvider theme={sumup}>{storyFn()}</ThemeProvider>
 );
 
 const withStoryStyles = storyFn => {
